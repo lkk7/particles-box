@@ -18,6 +18,7 @@ class Graphics
 
     private:
         SDL_Window* window;     // Pointer to the window
+        SDL_Renderer* renderer;
 };
 
 #endif

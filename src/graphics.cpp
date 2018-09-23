@@ -43,11 +43,19 @@ bool Graphics::init_self()
 
     /* Initialize the window */
     window = SDL_CreateWindow(win_title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, win_w, win_h, SDL_WINDOW_SHOWN);
-    if (window== NULL)
+    if (window == NULL)
         {
             std::cout << "SDL: window creation error!" << SDL_GetError();
             return 0;
         }
+
+    /* Initialize the renderer */
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    if (renderer == NULL)
+    {
+        printf( "Renderer could not be created! SDL Error: %s\n", SDL_GetError() );
+        return 0;
+    }
 
     return 1;
 }
