@@ -1,32 +1,26 @@
 #include <iostream>
 #include <string>
 #include "graphics.hpp"
+#include "events.hpp"
+
+namespace CFG_CONST
+{
+const std::string WIN_TITLE = "particle2Dsim";
+const int WIN_W= 800;
+const int WIN_H = 600;
+}
 
 int main(int argc, char const *argv[])
 {
     bool quit = false;
-    SDL_Event event;
-    Graphics graphics = Graphics();
+    Graphics graphics = Graphics(CFG_CONST::WIN_W, CFG_CONST::WIN_H, CFG_CONST::WIN_TITLE);
 
-    /* Handle events */
+    /* Main loop */
     while (!quit)
     {
-        while (SDL_PollEvent(&event))
-        {
-            if (event.type == SDL_QUIT)
-            {
-                quit = true;
-            }
-            else if (event.type == SDL_KEYDOWN)
-            {
-                if (event.key.keysym.sym == SDLK_ESCAPE)
-                {
-                    quit = true;
-                }
-            }
-        }
+        if (handle_events()) quit = true;
+        graphics.draw();
     }
 
     return 0;
 }
-

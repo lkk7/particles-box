@@ -5,11 +5,12 @@
 namespace GRAPHICS_CONSTANTS
 {
 const std::string WIN_TITLE = "particle2Dsim";
-const int WIN_W= 640;
-const int WIN_H = 480;
+const int WIN_W= 800;
+const int WIN_H = 600;
 }
 
-Graphics::Graphics()
+Graphics::Graphics(int w = 800, int h = 600, const std::string title = "particle2Dsim")
+    : win_w(w), win_h(h), win_title(title)
 {
     /* Check if SDL inits correctly */
     if (!init_self())
@@ -36,11 +37,6 @@ bool Graphics::init_self()
         return 0;
     }
 
-    /* Get essential values from the GRAPHICS_CONSTANTS namespace */
-    win_w = GRAPHICS_CONSTANTS::WIN_W;
-    win_h = GRAPHICS_CONSTANTS::WIN_H;
-    win_title = GRAPHICS_CONSTANTS::WIN_TITLE;
-
     /* Initialize the window */
     window = SDL_CreateWindow(win_title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, win_w, win_h, SDL_WINDOW_SHOWN);
     if (window == NULL)
@@ -56,7 +52,14 @@ bool Graphics::init_self()
         printf( "Renderer could not be created! SDL Error: %s\n", SDL_GetError() );
         return 0;
     }
+    SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);   // Background color
 
     return 1;
+}
+
+void Graphics::draw()
+{
+    SDL_RenderClear(renderer);
+    SDL_RenderPresent(renderer);
 }
 

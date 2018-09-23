@@ -12,13 +12,14 @@ class Graphics
         int win_w;              // Window width
         int win_h;              // Window height
         std::string win_title;  // Window title
-        Graphics();             // Constructor
+        Graphics(int w, int h, const std::string title);  // Sets width, height and title of the window
         ~Graphics();            // Destructor
         bool init_self();       // SDL resources initiation
+        void draw();            // Draw background and given objects
 
     private:
         SDL_Window* window;     // Pointer to the window
-        SDL_Renderer* renderer;
+        SDL_Renderer* renderer; // Renderer for the graphics
 };
 
 #endif
