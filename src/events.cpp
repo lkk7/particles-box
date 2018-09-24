@@ -4,6 +4,7 @@ SDL_Event ev;    // Object for storing SDL events
 
 bool handle_events()
 {
+    // Check for quit button click or escape key.
     while (SDL_PollEvent(&ev))
     {
         if (ev.type == SDL_QUIT)

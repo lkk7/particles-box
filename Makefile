@@ -1,4 +1,4 @@
-EXECUTABLE_NAME = particlesbox
+EXECUTABLE_NAME = particles_box
 CXX = g++
 CXXFLAGS = -Wall -Iinclude
 LIBS = -lSDL2

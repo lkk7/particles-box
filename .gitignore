@@ -2,4 +2,4 @@
 !.gitignore
 obj/*.o
 !obj/.gitkeep
-particlesbox
+particles_box

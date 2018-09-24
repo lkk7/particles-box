@@ -1,4 +1,4 @@
-# particles-box (currently in development)
+# particles_box (currently in development)
 Quick, C++ SDL-based program which graphically simulates a bunch of 2D particles in a container.
 
 ------------
