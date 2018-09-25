@@ -11,20 +11,21 @@ namespace CFG
     int WIN_H = 600;
     std::string WIN_TITLE = "particles_box";
     int PARTICLE_PX_SIZE = 10;
-    int NUMBER_OF_PARTICLES = 30;
+    int NUMBER_OF_PARTICLES = 100;
 
 }
 
 int main(int argc, char const *argv[])
 {
     bool quit = false;
+
     Graphics graphics = Graphics(CFG::WIN_W, CFG::WIN_H, CFG::WIN_TITLE);
     Physics physics = Physics(CFG::WIN_W, CFG::WIN_H, CFG::PARTICLE_PX_SIZE, CFG::NUMBER_OF_PARTICLES);
 
     /* Main loop */
-    while (!quit)
+    while (!quit && !graphics.error && !physics.error)
     {
-        if (handle_events()) 
+        if (handle_events())
         {
             quit = true;
         }

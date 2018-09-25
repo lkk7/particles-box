@@ -13,8 +13,10 @@ class Physics
             int vx;                      // x velocity
             int vy;                      // y velocity
         };
+        bool error;   // State of the physics engine after init
         Physics(int width, int height, int size, int quantity);  // Sets width, height of the container, size and quantity of particles
         ~Physics();                      // Destructor
+        bool init_particles();                // Moves each particle to its initial place
 
     private:
         int container_width;             // Width of the container

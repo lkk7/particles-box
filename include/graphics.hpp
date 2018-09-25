@@ -8,7 +8,7 @@
 class Graphics
 {
     public:
-        bool works_correctly;   // State of the graphic engine after init
+        bool error;   // State of the graphic engine after init
         Graphics(int w, int h, std::string title);  // Sets width, height and title of the window
         ~Graphics();            // Destructor
         bool init_self();       // SDL resources initiation

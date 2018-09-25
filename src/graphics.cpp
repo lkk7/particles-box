@@ -9,9 +9,9 @@ Graphics::Graphics(int w = 800, int h = 600, std::string title = "particles_box"
     /* Check if SDL inits correctly */
     if (!init_self())
     {
-        works_correctly = 0;
+        error = 1;
     }
-    works_correctly = 1;
+    error  = 0;
 }
 
 Graphics::~Graphics()
@@ -48,7 +48,7 @@ bool Graphics::init_self()
     }
     SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);   // Background color
 
-    std::cout << "window: " << win_w << " x " << win_h << "\n" << std::flush;
+    std::cout << "window: " << win_w << " x " << win_h << " px\n" << std::flush;
     return 1;
 }
 
