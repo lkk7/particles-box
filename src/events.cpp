@@ -9,16 +9,16 @@ bool handle_events()
     {
         if (ev.type == SDL_QUIT)
         {
-            return true;
+            return false;
         }
         else if (ev.type == SDL_KEYDOWN)
         {
             if (ev.key.keysym.sym == SDLK_ESCAPE)
             {
-                return true;
+                return false;
             }
         }
     }
 
-    return false;
+    return true;
 }

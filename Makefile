@@ -1,7 +1,7 @@
 EXECUTABLE_NAME = particles_box
 CXX = g++
 CXXFLAGS = -Wall -Iinclude
-LIBS = -lSDL2
+LIBS = -lSDL2 -lSDL2_image
 
 SRC_DIR = src
 OBJ_DIR = obj
