@@ -27,11 +27,14 @@ int main(int argc, char const *argv[])
     while (!graphics->error && !physics->error)
     {
         now = std::chrono::high_resolution_clock::now();
+
         if (!handle_events())
         {
             break;
         }
+        physics->manage_all();
         graphics->display_all();
+
         int exec_time = std::chrono::duration_cast<std::chrono::milliseconds>(now - std::chrono::high_resolution_clock::now()).count();
         int sleep_time = (1000 / CFG::FPS) - exec_time;
         if (sleep_time > 0)

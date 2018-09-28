@@ -10,10 +10,9 @@ class Graphics
 {
     public:
         bool error;                                                        // State of the graphic engine after init
-        Graphics(Physics* phys, int w, int h, std::string title); // Sets essential parameters and the Physics object.
+        Graphics(Physics* phys, int w, int h, std::string title);          // Sets essential parameters and the Physics object.
         ~Graphics();                                                       // Destructor
-        bool init_self();                                                  // SDL and resources initiation
-        bool get_particle_texture();                                       // Get the texture for particles                  
+        bool init_self();                                                  // SDL and resources initiation               
         void display_all();                                                // Present background and all particles to the screen
 
     private:
@@ -24,7 +23,7 @@ class Graphics
         SDL_Window* window;     // Pointer to the window
         SDL_Renderer* renderer; // Renderer for the graphics
         SDL_Texture* texture;   // Texture of a particle 
-        SDL_Rect rect;         // Universal Rect for drawing
+        SDL_Rect rect;          // Universal Rect for drawing
 };
 
 #endif

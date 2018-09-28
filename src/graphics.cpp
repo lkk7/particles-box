@@ -83,7 +83,7 @@ bool Graphics::init_self()
 void Graphics::display_all()
 {
     SDL_RenderClear(renderer);
-    for (auto particle : physics->particles)
+    for (auto particle : physics->get_particles())
     {
         (&rect)->x = particle->x;
         (&rect)->y = particle->y;
