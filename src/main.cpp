@@ -11,15 +11,16 @@ namespace CFG
 {
     int WIN_W = 800;
     int WIN_H = 600;
-    int PARTICLE_PX_SIZE = 20;
-    int NUMBER_OF_PARTICLES = 300;
     std::string WIN_TITLE = "particles_box";
     int FPS = 30;
+    int PARTICLE_PX_SIZE = 20;
+    int NUMBER_OF_PARTICLES = 200;
+    double PARTICLE_SPEED = 10.0;
 }
 
 int main(int argc, char const *argv[])
 {
-    Physics *physics = new Physics(CFG::WIN_W, CFG::WIN_H, CFG::PARTICLE_PX_SIZE, CFG::NUMBER_OF_PARTICLES);
+    Physics *physics = new Physics(CFG::WIN_W, CFG::WIN_H, CFG::PARTICLE_PX_SIZE, CFG::NUMBER_OF_PARTICLES, CFG::PARTICLE_SPEED);
     Graphics *graphics = new Graphics(physics, CFG::WIN_W, CFG::WIN_H, CFG::WIN_TITLE);
     auto now = std::chrono::high_resolution_clock::now();
 

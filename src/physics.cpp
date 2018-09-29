@@ -3,7 +3,8 @@
 #include <iostream>
 #include "physics.hpp"
 
-Physics::Physics(int width, int height, int size, int quantity) : container_width(width), container_height(height), px_size(size)
+Physics::Physics(int width, int height, int size, int quantity, double speed) 
+    : container_width(width), container_height(height), px_size(size), particle_speed(speed)
 {   
     /* Create particles and init them*/
     error = 0;
@@ -49,7 +50,8 @@ bool Physics::init_particles()
 
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<double> dist(-9.99, 10.0);
+    std::uniform_real_distribution<double> dist(0, 1);
+    std::uniform_int_distribution<> sign(0, 1);
 
     for (int j = 0, p = 0; j < column_length; j++)
     {
@@ -58,8 +60,9 @@ bool Physics::init_particles()
             if (p >= static_cast<int>(particles.size())) break;
             particles[p]->x = i * px_size;
             particles[p]->y = j * px_size;
-            particles[p]->vx = dist(gen);
-            particles[p]->vy = dist(gen);
+
+            particles[p]->vx = dist(gen) * particle_speed * (sign(gen) == 1 ? 1 : -1);
+            particles[p]->vy = sqrt(particle_speed * particle_speed - particles[p]->vx * particles[p]->vx) * (sign(gen) == 1 ? 1 : -1);
         }
     }
 
@@ -79,7 +82,6 @@ void Physics::manage_all()
         {
             particle->vy = -particle->vy;
         }
-
         particle->x += particle->vx;
         particle->y += particle->vy;
     };
