@@ -1,0 +1,5 @@
+.*
+!.gitignore
+obj/*.o
+!obj/.gitkeep
+particles_box
