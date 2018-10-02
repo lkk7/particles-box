@@ -30,6 +30,10 @@ class Physics
         inline const std::vector<Particle*>& get_particles() const {return particles;}
         /* Moves every particle to its initial place, gives each one velocity */
         bool init_particles();
+        /* Manage container collision for a particle */
+        void manage_container(Particle* p);
+        /* Manage collision of two particles */
+        void manage_collision(Particle* p, Particle* q);
         /* Manage state of the particles */
         void manage_all();
 

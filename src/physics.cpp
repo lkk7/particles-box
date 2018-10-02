@@ -6,7 +6,7 @@
 Physics::Physics(int width, int height, int size, int quantity, double speed) 
     : container_width(width), container_height(height), px_size(size), particle_speed(speed)
 {   
-    /* Create particles and init them*/
+    /* Create particles and init them */
     error = 0;
     particles.resize(quantity);
     for (auto &i : particles)
@@ -69,21 +69,33 @@ bool Physics::init_particles()
     return 1;
 }
 
+void Physics::manage_container(Particle* p)
+{
+    /* Reverse corresponding velocity if a particle hits a wall of the container */
+    if ((p->x < 0) || (p->x + px_size > container_width))
+        {
+            p->vx = -p->vx;
+        }
+        if ((p->y < 0) || (p->y + px_size > container_height))
+        {
+            p->vy = -p->vy;
+        }
+}
+
+void Physics::manage_collision(Particle *p, Particle* q)
+{
+    /* Manage a collision of two particles */
+    
+}
+
 void Physics::manage_all()
 {
-    /* Manage collisions, velocities */
+    /* Manage all collisions and velocities */
     for (auto particle : particles)
     {
-        if ((particle->x < 0) || (particle->x + px_size > container_width))
-        {
-            particle->vx = -particle->vx;
-        }
-        if ((particle->y < 0) || (particle->y + px_size > container_height))
-        {
-            particle->vy = -particle->vy;
-        }
+        manage_container(particle);
+
         particle->x += particle->vx;
         particle->y += particle->vy;
-    };
-    return;
+    }
 }
