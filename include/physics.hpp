@@ -17,6 +17,8 @@ class Physics
             double vx;
             /* y velocity */
             double vy;
+            /* Number of collisions in the most recent delta t*/
+            int recent_collisions;
         };
         /* State of the Physics after init */
         bool error;
