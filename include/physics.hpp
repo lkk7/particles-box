@@ -17,8 +17,6 @@ class Physics
             double vx;
             /* y velocity */
             double vy;
-            /* Number of collisions in the most recent delta t*/
-            int recent_collisions;
         };
         /* State of the Physics after init */
         bool error;
@@ -34,8 +32,6 @@ class Physics
         bool init_particles();
         /* Manage container collision for a particle */
         void manage_container(Particle* p);
-        /* Manage collision of two particles */
-        void manage_collision(Particle* p, Particle* q);
         /* Manage state of the particles */
         void manage_all();
 
