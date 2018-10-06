@@ -60,7 +60,6 @@ bool Physics::init_particles()
             if (p >= static_cast<int>(particles.size())) break;
             particles[p]->x = i * px_size;
             particles[p]->y = j * px_size;
-
             particles[p]->vx = dist(gen) * particle_speed * (sign(gen) == 1 ? 1 : -1);
             particles[p]->vy = sqrt(particle_speed * particle_speed - particles[p]->vx * particles[p]->vx) * (sign(gen) == 1 ? 1 : -1);
         }
@@ -82,20 +81,16 @@ void Physics::manage_container(Particle* p)
         }
 }
 
-void Physics::manage_collision(Particle *p, Particle* q)
-{
-    /* Manage a collision of two particles */
-    
-}
-
 void Physics::manage_all()
 {
-    /* Manage all collisions and velocities */
+    /* Manage all collisions with container and velocities */
+    int i = 0;
     for (auto particle : particles)
     {
         manage_container(particle);
 
         particle->x += particle->vx;
         particle->y += particle->vy;
+        i++;
     }
 }

@@ -14,7 +14,7 @@ namespace CFG
     std::string WIN_TITLE = "particles_box";
     int UPDATES_PER_SEC = 50;
     int PARTICLE_PX_SIZE = 20;
-    int NUMBER_OF_PARTICLES = 200;
+    int NUMBER_OF_PARTICLES = 300;
     double PARTICLE_SPEED = 5.0;
 }
 
