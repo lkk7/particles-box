@@ -1,13 +1,13 @@
-# particles_box (currently in development)
-Quick, C++ SDL-based program which graphically simulates a bunch of 2D particles in a container.
+# particles_box
+A bunch of non-colliding particles in a container.
 
 ------------
+### Libraries used
+SDL 2.0.
 
+------------
 ### How to compile
-1. Get this repository and open its folder in the terminal.
-2. Use  `make` command, then optionally `make clean` to clean after building.
+Just use `make` in the main folder of this repository.
 
 ------------
-
-### How to use
-Soon.
+###### Made for fun.
