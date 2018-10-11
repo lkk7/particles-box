@@ -1,25 +1,34 @@
 #include <fstream>
-#include <string>
 #include <chrono>
 #include "physics.hpp"
 #include "graphics.hpp"
 #include "events.hpp"
-
+#include "readcfg.hpp"
 
 /* Config */
 namespace CFG
 {
-    int WIN_W = 800;
-    int WIN_H = 600;
-    std::string WIN_TITLE = "particles_box";
-    int UPDATES_PER_SEC = 50;
-    int PARTICLE_PX_SIZE = 20;
-    int NUMBER_OF_PARTICLES = 300;
-    double PARTICLE_SPEED = 5.0;
+    int WIN_W;
+    int WIN_H;
+    std::string WIN_TITLE;
+    int PARTICLE_PX_SIZE;
+    int NUMBER_OF_PARTICLES;
+    double PARTICLE_SPEED;
 }
 
 int main(int argc, char const *argv[])
 {
+    /* Read the configuration */
+    if (!readcfg(CFG::WIN_W, 
+                 CFG::WIN_H, 
+                 CFG::WIN_TITLE, 
+                 CFG::PARTICLE_PX_SIZE,
+                 CFG::NUMBER_OF_PARTICLES, 
+                 CFG::PARTICLE_SPEED))
+    {
+        return 1;
+    }
+
     /* Physics and Graphics objects used to start the program */
     Physics *physics = new Physics(CFG::WIN_W, CFG::WIN_H, CFG::PARTICLE_PX_SIZE, CFG::NUMBER_OF_PARTICLES, CFG::PARTICLE_SPEED);
     Graphics *graphics = new Graphics(physics, CFG::WIN_W, CFG::WIN_H, CFG::WIN_TITLE);
@@ -39,7 +48,7 @@ int main(int argc, char const *argv[])
 
         /* Sleep to maintain set update rate*/
         int exec_time = std::chrono::duration_cast<std::chrono::milliseconds>(now - std::chrono::high_resolution_clock::now()).count();
-        int sleep_time = (1000 / CFG::UPDATES_PER_SEC) - exec_time;
+        int sleep_time = (1000 / 50) - exec_time;
         if (sleep_time > 0)
         {
             SDL_Delay(sleep_time);
