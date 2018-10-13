@@ -21,7 +21,6 @@ int main(int argc, char const *argv[])
     /* Read the configuration */
     if (!readcfg(CFG::WIN_W, 
                  CFG::WIN_H, 
-                 CFG::WIN_TITLE, 
                  CFG::PARTICLE_PX_SIZE,
                  CFG::NUMBER_OF_PARTICLES, 
                  CFG::PARTICLE_SPEED))
@@ -31,7 +30,7 @@ int main(int argc, char const *argv[])
 
     /* Physics and Graphics objects used to start the program */
     Physics *physics = new Physics(CFG::WIN_W, CFG::WIN_H, CFG::PARTICLE_PX_SIZE, CFG::NUMBER_OF_PARTICLES, CFG::PARTICLE_SPEED);
-    Graphics *graphics = new Graphics(physics, CFG::WIN_W, CFG::WIN_H, CFG::WIN_TITLE);
+    Graphics *graphics = new Graphics(physics, CFG::WIN_W, CFG::WIN_H, "particles_box");
     
     /* Main loop */
     auto now = std::chrono::high_resolution_clock::now();
