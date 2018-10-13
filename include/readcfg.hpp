@@ -4,11 +4,10 @@
 #include <iostream>
 
 /* Read config.cfg into given variables */
-bool readcfg(int& win_w, 
+bool readcfg(int &win_w, 
              int& win_h, 
-             std::string& win_title, 
              int& particle_px_size,
-             int& number_of_parrticles, 
+             int& number_of_particles, 
              double& particle_speed);
 
 #endif

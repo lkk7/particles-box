@@ -2,8 +2,8 @@
 #include <string>
 #include "readcfg.hpp"
 
-bool readcfg(int& win_w,  int& win_h,  std::string& win_title, int& particle_px_size,
-             int& number_of_parrticles, double& particle_speed)
+bool readcfg(int& win_w,  int& win_h, int& particle_px_size,
+             int& number_of_particles, double& particle_speed)
 {
     std::ifstream cfg_stream("config.cfg");
     if(!cfg_stream.is_open())
@@ -15,28 +15,35 @@ bool readcfg(int& win_w,  int& win_h,  std::string& win_title, int& particle_px_
     std::string buffer;
     while (cfg_stream >> buffer)
     {
-        std::cout << buffer;
         if (buffer == "WIN_W")
         {
+            cfg_stream >> buffer;
             win_w = std::stoi(buffer);
         }
+        
         else if (buffer == "WIN_H")
         {
-            std::cout << "X\n";
+            cfg_stream >> buffer;
             win_h = std::stoi(buffer);
-            std::cout << "X\n";
-        }
-        else if (buffer == "WIN_TITLE")
-        {
-            win_title = buffer;
         }
         else if (buffer == "PARTICLE_PX_SIZE")
         {
+            cfg_stream >> buffer;
             particle_px_size = std::stoi(buffer);
+        }
+        else if (buffer == "NUMBER_OF_PARTICLES")
+        {
+            cfg_stream >> buffer;
+            number_of_particles = std::stoi(buffer);
         }
         else if (buffer == "PARTICLE_SPEED")
         {
+            cfg_stream >> buffer;
             particle_speed = std::stod(buffer);
+        }
+        else
+        {
+            std::cout << "error: wrong config!";
         }
     }
     return 1;
