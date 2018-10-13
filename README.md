@@ -15,7 +15,7 @@ SDL 2.0.
 'PARTICLE\_PX\_SIZE' - size of particles in pixels,
 'NUMBER\_OF_PARTICLES' - number of particles on the screen,
 'PARTICLE\_SPEED' - how quick the particles move.
-* Run the executable.\
+* Run the executable.
 
 ------------
 ###### Made for fun.
